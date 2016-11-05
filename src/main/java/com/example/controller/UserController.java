@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.User;
+import com.example.projection.SecretUserPassword;
 import com.example.service.UserService;
 
 @RestController
@@ -26,9 +27,19 @@ public class UserController {
 			return userService.findByUsername(username);
 		}
 		
+		@RequestMapping(value="/email",method=RequestMethod.GET)
+		public List<SecretUserPassword> getUsersByEmail(@RequestParam("email") String email){
+			return userService.getUsersByEmail(email);
+		}
+		
 		@RequestMapping(method=RequestMethod.POST)
 		public User addUser(@RequestBody User user){
 			return userService.addUser(user);
+		}
+		
+		@RequestMapping(method=RequestMethod.PUT)
+		public User update(@RequestBody User user){
+			return userService.update(user);
 		}
 		
 		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)

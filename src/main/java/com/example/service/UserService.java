@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.model.User;
+import com.example.projection.SecretUserPassword;
 import com.example.repository.UserRepository;
 
 @Service
@@ -36,7 +37,17 @@ public class UserService {
 
 	public User findOne(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userRepo.findOne(id);
+	}
+	
+	public User update(User user){
+		return userRepo.save(user);
+		
+	}
+
+	public List<SecretUserPassword> getUsersByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userRepo.getUsersByEmail(email);
 	}
 
 }

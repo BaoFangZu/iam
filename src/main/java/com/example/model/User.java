@@ -1,13 +1,14 @@
 package com.example.model;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String username;
     private String password;
@@ -37,6 +38,7 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}

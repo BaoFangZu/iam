@@ -1,0 +1,39 @@
+spring
+
+1,  import org.springframework.data.jpa.repository.Query;
+    @Query("Select u from User u where u.email = ?1")
+    public List<User> getUsersByEmail(String email);
+    
+    User是@Entity注解的实体类，并不是表名
+    
+2,  非查询类操作
+
+	@Modifying
+	@Query("update User u set u.firstname = ?1 where u.lastname = ?2")
+	int setFixedFirstnameFor(String firstname, String lastname);
+	
+	
+	public interface UserRepository extends JpaRepository<User, Long> {
+
+	  @Query("select u from User u where u.firstname = :firstname or u.lastname = :lastname")
+	  User findByLastnameOrFirstname(@Param("lastname") String lastname,
+	                                 @Param("firstname") String firstname);
+	}
+		
+3, 返回自定义json视图
+
+	定义一个接口，用@projection注解
+	@Projection(name = "SecretUserPassword", types = { User.class })
+	public interface SecretUserPassword {
+		int getId();
+		@Value("#{target.username}")
+		String getName();
+		String getPhone();
+		String getEmail();
+		@Value("#{(target.password == null || target.password.empty) ? null : '******'}")
+		String getPassword();
+	}
+	
+	更改返回类型
+	@Query("Select u from User u where u.email = ?1")
+    public List<SecretUserPassword> getUsersByEmail(String email);
