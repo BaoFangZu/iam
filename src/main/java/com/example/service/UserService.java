@@ -15,11 +15,6 @@ public class UserService {
 	@Autowired
 	UserRepository userRepo;
 
-	public List<User> findByUsername(String username) {
-		// TODO Auto-generated method stub
-		return userRepo.findByUsername(username);
-	}
-
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
 		return userRepo.save(user);
@@ -48,6 +43,11 @@ public class UserService {
 	public List<SecretUserPassword> getUsersByEmail(String email) {
 		// TODO Auto-generated method stub
 		return userRepo.getUsersByEmail(email);
+	}
+
+	public List<User> findByUsernameOrEmailOrPhone(String username, String email, String phone) {
+		// TODO Auto-generated method stub
+		return userRepo.findByUsernameOrEmailOrPhone(username, email, phone);
 	}
 
 }

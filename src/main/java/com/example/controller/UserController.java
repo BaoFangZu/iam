@@ -21,15 +21,13 @@ public class UserController {
 		@Autowired
 		UserService userService;
 		
-		
 		@RequestMapping(method=RequestMethod.GET)
-		public List<User> findUsers(@RequestParam("username") String username){
-			return userService.findByUsername(username);
-		}
-		
-		@RequestMapping(value="/email",method=RequestMethod.GET)
-		public List<SecretUserPassword> getUsersByEmail(@RequestParam("email") String email){
-			return userService.getUsersByEmail(email);
+		public List<User> findUsers(
+				@RequestParam(value="username",required=false) String username,
+				@RequestParam(value="email",required=false) String email,
+				@RequestParam(value="phone",required=false) String phone
+				){
+			return userService.findByUsernameOrEmailOrPhone(username, email, phone);
 		}
 		
 		@RequestMapping(method=RequestMethod.POST)
