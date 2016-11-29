@@ -2,6 +2,7 @@ package com.example.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,8 @@ public class User {
     private String password;
     private String email;
     private String phone;
-    private Timestamp create_time;
+    @Column(name="create_time",insertable = false, updatable = false)
+    private Timestamp createTime;
     
     public User() {}
     
@@ -57,17 +59,15 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Timestamp getCreate_time() {
-		return create_time;
-	}
-	public void setCreate_time(Timestamp create_time) {
-		this.create_time = create_time;
+
+	public Timestamp getCreateTime() {
+		return createTime;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", phone="
-				+ phone + ", create_time=" + create_time + "]";
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
 	}
+
+
 
 }

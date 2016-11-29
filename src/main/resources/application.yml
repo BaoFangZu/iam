@@ -10,7 +10,7 @@ spring:
     password: HuaWei!@#123
 
 server:
-   port: 5550
+   port: 5552
 
 eureka:
   instance:

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.model.User;
 import com.example.projection.SecretUserPassword;
 import com.example.repository.UserRepository;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Service
 public class UserService {
 	
@@ -17,6 +17,7 @@ public class UserService {
 
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		return userRepo.save(user);
 	}
 
