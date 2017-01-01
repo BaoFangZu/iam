@@ -7,8 +7,8 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
-@Configuration
-@EnableRedisHttpSession 
+//@Configuration
+//@EnableRedisHttpSession 
 public class HttpSessionConfig {
 
 /*        @Bean

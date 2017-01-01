@@ -50,8 +50,8 @@ public class UserController {
 			return userService.findAll();
 		}
 		
-		@RequestMapping(value="/{id}", method=RequestMethod.GET)
-		public User findOne(@PathVariable long id){
-			return userService.findOne(id);
+		@RequestMapping(value="/{ids}", method=RequestMethod.GET)
+		public Object findOne(@PathVariable String ids){
+			return userService.findUserByIds(ids);
 		}
 }

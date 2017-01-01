@@ -11,6 +11,13 @@ spring:
 
 server:
    port: 5552
+spring.autoconfigure.exclude: org.springframework.boot.autoconfigure.session.SessionAutoConfiguration
+
+security:
+  sessions: NEVER
+management:
+  security:
+    enabled: false
 
 eureka:
   instance:
@@ -22,4 +29,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://10.68.51.99:8765/eureka/
+      defaultZone: http://10.68.51.99:8764/eureka/
