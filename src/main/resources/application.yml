@@ -18,7 +18,9 @@ security:
 management:
   security:
     enabled: false
-
+feign:
+  hystrix:
+    enabled: true
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10

@@ -18,8 +18,8 @@ public class UserService {
 	@Autowired
 	UserRepository userRepo;
 	
-//	@Autowired
-//	ProjectClient projectClient;
+	@Autowired
+	ProjectClient projectClient;
 
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
@@ -45,8 +45,8 @@ public class UserService {
 	public User findOne(long id) {
 		// TODO Auto-generated method stub
 		User user = userRepo.findOne(id);
-		//List<Project> projects = projectClient.findProjects(id);
-		//user.setProjects(projects);
+		List<Project> projects = projectClient.findProjects(id);
+		user.setProjects(projects);
 		return user;
 	}
 	
